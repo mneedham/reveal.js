@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Neo4j World Cup Hackathon</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+	<header style="position: absolute;top: 50px; left: 100px; z-index:500; font-size:100px;background-color: rgba(0,0,0,0)"></header>			
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<img src="images/welcome-logo.png" style="border:none; box-shadow:none;"></img>
+					<h1>Neo4j World Cup Hackathon</h1>
+					<h3>Football as a graph</h3>
+					<p>
+						<small>with Mark Needham <a href="http://twitter.com/markhneedham">@markhneedham</a></small>
+						<small>and Alistair Jones <a href="http://twitter.com/apcj">@apcj</a></small>
+					</p>
+										
+				</section>
+
+				<section>
+					<h2>Scrape all the things</h2>
+					<p>
+						<img src="images/fifa.png" style="border:none; box-shadow:none;"></img>
+					</p>
+				</section>
+
+				<section>					
+
+					<table width="100%">
+						<tbody>
+							<tr>
+								<td style="vertical-align:middle;">
+
+					<ul>
+						<li>Bunch of scripts written in Ruby</li>
+						<li>Nokogiri to find the URLs of the pages to download</li>
+						<li>Parallel + Mechanize to download the pages</li>
+						<li>Nokogiri to extract appropriate parts and create CSV files</li>
+						<li>LOAD CSV to import all the things</li>
+					</ul>
+								</td>
+
+								<td style="vertical-align:middle;">
+<img src="images/scrape-all-the-things.png" style="border:none; box-shadow:none;"></img>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+				</section>	
+
+				<section>
+<h1>http://github.com/mneedham/neo4j-worldcup</h1>
+				</section>			
+
+				<section>
+
+					<h2>Initial Model</h2>
+
+<svg xmlns="http://www.w3.org/2000/svg" class="graphdiagram" viewBox="-593.6393993594633 -543.7158833610747 2560 1319"><g class="layer relationships"><g class="related-pair"><g class="relationship" transform="translate(258.40285325536524,503.3691745274132) rotate(-135.1835493659754)"><path class="relationship" d="M 133.40379138403677 4 L 487.40403059160747 4 L 487.40403059160747 16 L 519.4040305916075 0 L 487.40403059160747 -16 L 487.40403059160747 -4 L 133.40379138403677 -4 Z" fill="rgb(0, 0, 0)" stroke="rgb(51, 51, 51)" stroke-width="0px"/><text class="type" text-anchor="middle" baseline-shift="30%" alignment-baseline="alphabetic" transform="rotate(180)" x="-310.4039109878221" y="0" font-size="50px" font-family="'Gill Sans', 'Gill Sans MT', Calibri, sans-serif">HOSTED_BY</text></g></g><g class="related-pair"><g class="relationship" transform="translate(258.40285325536524,503.3691745274132) rotate(-49.44936970922371)"><path class="relationship" d="M 133.40379138403677 4 L 599.7229180135187 4 L 599.7229180135187 16 L 631.7229180135187 0 L 599.7229180135187 -16 L 599.7229180135187 -4 L 133.40379138403677 -4 Z" fill="rgb(0, 0, 0)" stroke="rgb(51, 51, 51)" stroke-width="0px"/><text class="type" text-anchor="middle" baseline-shift="30%" alignment-baseline="alphabetic" x="366.56335469877774" y="0" font-size="50px" font-family="'Gill Sans', 'Gill Sans MT', Calibri, sans-serif">CONTAINS_MATCH</text></g></g><g class="related-pair"><g class="relationship" transform="translate(754.4756817835813,-76.41924713904871) rotate(90)"><path class="relationship" d="M 131.3254848433852 4 L 480.72929363238336 4 L 480.72929363238336 16 L 512.7292936323834 0 L 480.72929363238336 -16 L 480.72929363238336 -4 L 131.3254848433852 -4 Z" fill="rgb(0, 0, 0)" stroke="rgb(51, 51, 51)" stroke-width="0px"/><text class="type" text-anchor="middle" baseline-shift="30%" alignment-baseline="alphabetic" x="306.0273892378843" y="0" font-size="50px" font-family="'Gill Sans', 'Gill Sans MT', Calibri, sans-serif">HOME_TEAM</text></g></g><g class="related-pair"><g class="relationship" transform="translate(754.4756817835813,-76.41924713904871) rotate(53.384653232537715)"><path class="relationship" d="M 131.3254848433852 4 L 583.3677289005628 4 L 583.3677289005628 16 L 615.3677289005628 0 L 583.3677289005628 -16 L 583.3677289005628 -4 L 131.3254848433852 -4 Z" fill="rgb(0, 0, 0)" stroke="rgb(51, 51, 51)" stroke-width="0px"/><text class="type" text-anchor="middle" baseline-shift="30%" alignment-baseline="alphabetic" x="357.346606871974" y="0" font-size="50px" font-family="'Gill Sans', 'Gill Sans MT', Calibri, sans-serif">AWAY_TEAM</text></g></g><g class="related-pair"><g class="relationship" transform="translate(258.40285325536524,503.3691745274132) rotate(-109.69009983811118)"><path class="relationship" d="M 133.40379138403677 4 L 496.11741355759045 4 L 496.11741355759045 16 L 528.1174135575905 0 L 496.11741355759045 -16 L 496.11741355759045 -4 L 133.40379138403677 -4 Z" fill="rgb(0, 0, 0)" stroke="rgb(51, 51, 51)" stroke-width="0px"/><text class="type" text-anchor="middle" baseline-shift="30%" alignment-baseline="alphabetic" transform="rotate(180)" x="-314.76060247081364" y="0" font-size="50px" font-family="'Gill Sans', 'Gill Sans MT', Calibri, sans-serif">IN_YEAR</text></g></g><g class="related-pair"><g class="relationship" transform="translate(754.4756817835813,-76.41924713904871) rotate(-1.7781053093868806)"><path class="relationship" d="M 131.3254848433852 4 L 666.9523245244035 4 L 666.9523245244035 16 L 698.9523245244035 0 L 666.9523245244035 -16 L 666.9523245244035 -4 L 131.3254848433852 -4 Z" fill="rgb(0, 0, 0)" stroke="rgb(51, 51, 51)" stroke-width="0px"/><text class="type" text-anchor="middle" baseline-shift="30%" alignment-baseline="alphabetic" x="399.13890468389434" y="0" font-size="50px" font-family="'Gill Sans', 'Gill Sans MT', Calibri, sans-serif">PLAYED_AT_TIME</text></g></g><g class="related-pair"><g class="relationship" transform="translate(754.4756817835813,-76.41924713904871) rotate(-27.8983461775891)"><path class="relationship" d="M 131.3254848433852 4 L 483.2449019858168 4 L 483.2449019858168 16 L 515.2449019858168 0 L 483.2449019858168 -16 L 483.2449019858168 -4 L 131.3254848433852 -4 Z" fill="rgb(0, 0, 0)" stroke="rgb(51, 51, 51)" stroke-width="0px"/><text class="type" text-anchor="middle" baseline-shift="30%" alignment-baseline="alphabetic" x="307.285193414601" y="0" font-size="50px" font-family="'Gill Sans', 'Gill Sans MT', Calibri, sans-serif">IN_PHASE</text></g></g><g class="related-pair"><g class="relationship" transform="translate(754.4756817835813,-76.41924713904871) rotate(-162.73316322041774)"><path class="relationship" d="M 131.3254848433852 4 L 666.0260288154966 4 L 666.0260288154966 16 L 698.0260288154966 0 L 666.0260288154966 -16 L 666.0260288154966 -4 L 131.3254848433852 -4 Z" fill="rgb(0, 0, 0)" stroke="rgb(51, 51, 51)" stroke-width="0px"/><text class="type" text-anchor="middle" baseline-shift="30%" alignment-baseline="alphabetic" transform="rotate(180)" x="-398.6757568294409" y="0" font-size="50px" font-family="'Gill Sans', 'Gill Sans MT', Calibri, sans-serif">PLAYED_IN_STADIUM</text></g></g></g><g class="layer nodes"><circle class="node node-id-0" r="74.90169943749474" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-width="8px" cx="-173.8193741045814" cy="73.90739645827722"/><circle class="node node-id-1" r="118.40379138403677" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-width="8px" cx="258.40285325536524" cy="503.3691745274132"/><circle class="node node-id-2" r="116.32548484338518" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-width="8px" cx="754.4756817835813" cy="-76.41924713904871"/><g class="caption"><text class="caption node" text-anchor="middle" alignment-baseline="central" x="-173.8193741045814" y="73.90739645827722" font-size="50px" font-family="'Gill Sans', 'Gill Sans MT', Calibri, sans-serif">Host</text></g><g class="caption"><text class="caption node" text-anchor="middle" alignment-baseline="central" x="258.40285325536524" y="478.3691745274132" font-size="50px" font-family="'Gill Sans', 'Gill Sans MT', Calibri, sans-serif">World</text><text class="caption node" text-anchor="middle" alignment-baseline="central" x="258.40285325536524" y="528.3691745274132" font-size="50px" font-family="'Gill Sans', 'Gill Sans MT', Calibri, sans-serif">Cup</text></g><g class="caption"><text class="caption node" text-anchor="middle" alignment-baseline="central" x="754.4756817835813" y="-101.41924713904871" font-size="50px" font-family="'Gill Sans', 'Gill Sans MT', Calibri, sans-serif">Home</text><text class="caption node" text-anchor="middle" alignment-baseline="central" x="754.4756817835813" y="-51.41924713904871" font-size="50px" font-family="'Gill Sans', 'Gill Sans MT', Calibri, sans-serif">vs Away</text></g><circle class="node node-id-3" r="118.4786409235671" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-width="8px" cx="754.4756817835813" cy="569.7886874169018"/><circle class="node node-id-4" r="118.4786409235671" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-width="8px" cx="1201.1175278822848" cy="524.6480926094354"/><circle class="node node-id-5" r="72.67727638395972" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-width="8px" cx="50.92156190184852" cy="-76.41924713904871"/><circle class="node node-id-8" r="76.69748694700662" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-width="8px" cx="1544.7447878761432" cy="-100.95217063869529"/><circle class="node node-id-12" r="90.04400045042509" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-width="8px" cx="1302.674072265625" cy="-366.65509461219324"/><circle class="node node-id-13" r="103.2926449934987" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-width="8px" cx="-25.05376434326172" cy="-318.7207531815292"/><g class="caption"><text class="caption node" text-anchor="middle" alignment-baseline="central" x="754.4756817835813" y="544.7886874169018" font-size="50px" font-family="'Gill Sans', 'Gill Sans MT', Calibri, sans-serif">Home</text><text class="caption node" text-anchor="middle" alignment-baseline="central" x="754.4756817835813" y="594.7886874169018" font-size="50px" font-family="'Gill Sans', 'Gill Sans MT', Calibri, sans-serif">Country</text></g><g class="caption"><text class="caption node" text-anchor="middle" alignment-baseline="central" x="1201.1175278822848" y="499.64809260943537" font-size="50px" font-family="'Gill Sans', 'Gill Sans MT', Calibri, sans-serif">Away</text><text class="caption node" text-anchor="middle" alignment-baseline="central" x="1201.1175278822848" y="549.6480926094354" font-size="50px" font-family="'Gill Sans', 'Gill Sans MT', Calibri, sans-serif">Country</text></g><g class="caption"><text class="caption node" text-anchor="middle" alignment-baseline="central" x="50.92156190184852" y="-76.41924713904871" font-size="50px" font-family="'Gill Sans', 'Gill Sans MT', Calibri, sans-serif">Year</text></g><g class="caption"><text class="caption node" text-anchor="middle" alignment-baseline="central" x="1544.7447878761432" y="-100.95217063869529" font-size="50px" font-family="'Gill Sans', 'Gill Sans MT', Calibri, sans-serif">Time</text></g><g class="caption"><text class="caption node" text-anchor="middle" alignment-baseline="central" x="1302.674072265625" y="-366.65509461219324" font-size="50px" font-family="'Gill Sans', 'Gill Sans MT', Calibri, sans-serif">Round</text></g><g class="caption"><text class="caption node" text-anchor="middle" alignment-baseline="central" x="-25.05376434326172" y="-318.7207531815292" font-size="50px" font-family="'Gill Sans', 'Gill Sans MT', Calibri, sans-serif">Stadium</text></g></g><g class="layer properties"/><g class="layer overlay"><circle class="node overlay" r="78.90169943749474" stroke="none" fill="rgba(255, 255, 255, 0)" cx="-173.8193741045814" cy="73.90739645827722"/><circle class="node overlay" r="122.40379138403677" stroke="none" fill="rgba(255, 255, 255, 0)" cx="258.40285325536524" cy="503.3691745274132"/><circle class="node overlay" r="120.32548484338518" stroke="none" fill="rgba(255, 255, 255, 0)" cx="754.4756817835813" cy="-76.41924713904871"/><circle class="node ring" r="83.90169943749474" fill="none" stroke="rgba(255, 255, 255, 0)" stroke-width="10px" cx="-173.8193741045814" cy="73.90739645827722"/><circle class="node ring" r="127.40379138403677" fill="none" stroke="rgba(255, 255, 255, 0)" stroke-width="10px" cx="258.40285325536524" cy="503.3691745274132"/><circle class="node ring" r="125.32548484338518" fill="none" stroke="rgba(255, 255, 255, 0)" stroke-width="10px" cx="754.4756817835813" cy="-76.41924713904871"/><path class="relationship overlay" fill="rgba(255, 255, 255, 0)" stroke="rgba(255, 255, 255, 0)" stroke-width="10px" transform="translate(258.40285325536524,503.3691745274132) rotate(-135.1835493659754)" d="M 133.40379138403677 4 L 487.40403059160747 4 L 487.40403059160747 16 L 519.4040305916075 0 L 487.40403059160747 -16 L 487.40403059160747 -4 L 133.40379138403677 -4 Z"/><path class="relationship overlay" fill="rgba(255, 255, 255, 0)" stroke="rgba(255, 255, 255, 0)" stroke-width="10px" transform="translate(258.40285325536524,503.3691745274132) rotate(-49.44936970922371)" d="M 133.40379138403677 4 L 599.7229180135187 4 L 599.7229180135187 16 L 631.7229180135187 0 L 599.7229180135187 -16 L 599.7229180135187 -4 L 133.40379138403677 -4 Z"/><circle class="node overlay" r="122.4786409235671" stroke="none" fill="rgba(255, 255, 255, 0)" cx="754.4756817835813" cy="569.7886874169018"/><circle class="node overlay" r="122.4786409235671" stroke="none" fill="rgba(255, 255, 255, 0)" cx="1201.1175278822848" cy="524.6480926094354"/><circle class="node overlay" r="76.67727638395972" stroke="none" fill="rgba(255, 255, 255, 0)" cx="50.92156190184852" cy="-76.41924713904871"/><circle class="node overlay" r="80.69748694700662" stroke="none" fill="rgba(255, 255, 255, 0)" cx="1544.7447878761432" cy="-100.95217063869529"/><circle class="node overlay" r="94.04400045042509" stroke="none" fill="rgba(255, 255, 255, 0)" cx="1302.674072265625" cy="-366.65509461219324"/><circle class="node overlay" r="107.2926449934987" stroke="none" fill="rgba(255, 255, 255, 0)" cx="-25.05376434326172" cy="-318.7207531815292"/><circle class="node ring" r="127.4786409235671" fill="none" stroke="rgba(255, 255, 255, 0)" stroke-width="10px" cx="754.4756817835813" cy="569.7886874169018"/><circle class="node ring" r="127.4786409235671" fill="none" stroke="rgba(255, 255, 255, 0)" stroke-width="10px" cx="1201.1175278822848" cy="524.6480926094354"/><circle class="node ring" r="81.67727638395972" fill="none" stroke="rgba(255, 255, 255, 0)" stroke-width="10px" cx="50.92156190184852" cy="-76.41924713904871"/><circle class="node ring" r="85.69748694700662" fill="none" stroke="rgba(255, 255, 255, 0)" stroke-width="10px" cx="1544.7447878761432" cy="-100.95217063869529"/><circle class="node ring" r="99.04400045042509" fill="none" stroke="rgba(255, 255, 255, 0)" stroke-width="10px" cx="1302.674072265625" cy="-366.65509461219324"/><circle class="node ring" r="112.2926449934987" fill="none" stroke="rgba(255, 255, 255, 0)" stroke-width="10px" cx="-25.05376434326172" cy="-318.7207531815292"/><path class="relationship overlay" fill="rgba(255, 255, 255, 0)" stroke="rgba(255, 255, 255, 0)" stroke-width="10px" transform="translate(754.4756817835813,-76.41924713904871) rotate(90)" d="M 131.3254848433852 4 L 480.72929363238336 4 L 480.72929363238336 16 L 512.7292936323834 0 L 480.72929363238336 -16 L 480.72929363238336 -4 L 131.3254848433852 -4 Z"/><path class="relationship overlay" fill="rgba(255, 255, 255, 0)" stroke="rgba(255, 255, 255, 0)" stroke-width="10px" transform="translate(754.4756817835813,-76.41924713904871) rotate(53.384653232537715)" d="M 131.3254848433852 4 L 583.3677289005628 4 L 583.3677289005628 16 L 615.3677289005628 0 L 583.3677289005628 -16 L 583.3677289005628 -4 L 131.3254848433852 -4 Z"/><path class="relationship overlay" fill="rgba(255, 255, 255, 0)" stroke="rgba(255, 255, 255, 0)" stroke-width="10px" transform="translate(258.40285325536524,503.3691745274132) rotate(-109.69009983811118)" d="M 133.40379138403677 4 L 496.11741355759045 4 L 496.11741355759045 16 L 528.1174135575905 0 L 496.11741355759045 -16 L 496.11741355759045 -4 L 133.40379138403677 -4 Z"/><path class="relationship overlay" fill="rgba(255, 255, 255, 0)" stroke="rgba(255, 255, 255, 0)" stroke-width="10px" transform="translate(754.4756817835813,-76.41924713904871) rotate(-1.7781053093868806)" d="M 131.3254848433852 4 L 666.9523245244035 4 L 666.9523245244035 16 L 698.9523245244035 0 L 666.9523245244035 -16 L 666.9523245244035 -4 L 131.3254848433852 -4 Z"/><path class="relationship overlay" fill="rgba(255, 255, 255, 0)" stroke="rgba(255, 255, 255, 0)" stroke-width="10px" transform="translate(754.4756817835813,-76.41924713904871) rotate(-27.8983461775891)" d="M 131.3254848433852 4 L 483.2449019858168 4 L 483.2449019858168 16 L 515.2449019858168 0 L 483.2449019858168 -16 L 483.2449019858168 -4 L 131.3254848433852 -4 Z"/><path class="relationship overlay" fill="rgba(255, 255, 255, 0)" stroke="rgba(255, 255, 255, 0)" stroke-width="10px" transform="translate(754.4756817835813,-76.41924713904871) rotate(-162.73316322041774)" d="M 131.3254848433852 4 L 666.0260288154966 4 L 666.0260288154966 16 L 698.0260288154966 0 L 666.0260288154966 -16 L 666.0260288154966 -4 L 131.3254848433852 -4 Z"/></g></svg>					
+				</section>
+
+		<section >
+					<h2>Let's have a look at the graph</h2>
+					
+					<iframe src="http://localhost:7516" width="100%" height="1100px"></iframe>
+				</section>			
+
+				
+				<section data-state="header1">
+					<style>.header1 header:after { content: "Things we can work on tonight"; }</style>
+						
+					<div>
+					<ul>
+						<li>Find insights from existing data</li>
+						<li>Visualisation of the data (with Alistair)</li>
+						<li>Pull in more data sources
+								<ul>
+									<li>Continents - Wikipedia</li>
+									<li>Weather - <a href="http://www.wunderground.com/">wunderground</a></li>																		
+									<li>GDP - <a href="http://www.worldeconomics.com/Data/MadisonHistoricalGDP/Madison%20Historical%20GDP%20Data.efp">Madison Historical GDP Data</a></li>
+									<li>Club teams - Wikipedia or ESPN</li>
+								</ul>								
+						</li>
+
+					</ul>
+				</div>
+				</section>
+
+
+				<section data-background="http://www.shoroc.com/regionalprofile/wp-content/uploads/2012/07/show-of-hands-e1375683870929.jpg">
+					<h1>Have you used Neo4j before?</h1>
+					
+				</section>				
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				width: 2060,
+    			height: 1300,
+
+				theme: 'beige', // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+			Reveal.addEventListener( 'customevent', function() {
+				console.log( '"customevent" has fired' );
+			} );
+
+		</script>
+
+	</body>
+</html>

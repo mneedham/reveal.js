@@ -206,7 +206,10 @@
 					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 Reveal.addEventListener( 'customevent', function() {
 	console.log( '"customevent" has fired' );
+	alert("totally james'd");
 } );
+
+
 					</code></pre>
 				</section>
 
@@ -258,21 +261,30 @@ Reveal.addEventListener( 'customevent', function() {
 
 				<section>
 					<h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
+					<pre><code data-trim>
+WITH [{decade: "twentyTens", from: 2010, to: 2019}, 
+      {decade: "naughties", from: 2000, to: 2009}, 
+      {decade: "nineties", from: 1990, to: 1999}, 
+      {decade: "eighties", from: 1980, to: 1989}, 
+      {decade: "seventies", from: 1970, to: 1979}] AS ranges
 
-    var nodes = document.querySelectorAll( selector );
+UNWIND ranges AS range
 
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
+MATCH (movie:Movie)<-[:DIRECTED]-(director)
+WHERE movie.released >= range.from AND movie.released <= range.to
 
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
+WITH movie, range, COLLECT(director) AS directors
+WITH range, COLLECT({movie: movie, directors: directors}) AS rows
+WITH range.decade AS decade, LENGTH(rows) AS numberOfFilms, 
+     [item IN rows | [d IN item.directors | d.name]] AS directors
+
+UNWIND directors AS director
+
+WITH decade, numberOfFilms, director, COUNT(*) AS directorFilms
+ORDER BY decade, directorFilms DESC
+
+RETURN decade, numberOfFilms, 
+       COLLECT({director: director, films: directorFilms})[0] AS director
 					</code></pre>
 					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
 				</section>
@@ -387,6 +399,10 @@ function linkify( selector ) {
 					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});
+
+			Reveal.addEventListener( 'customevent', function() {
+				console.log( '"customevent" has fired' );
+			} );
 
 		</script>
 
