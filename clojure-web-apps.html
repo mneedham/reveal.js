@@ -44,103 +44,354 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
+<section>	
+<h1>Building Neo4j backed web applications</h1>
+					 <img src="images/londonmeetup.png" width="50%" style="border-style:none;box-shadow:none;"></img>
+							
+					
+					<br />
+					<h2>25th June 2014</h2>
+				</section>
+
+				<section align="left">
+					<h2>Schedule</h2>
+					<br />
+					<br />
+						<li><span class="biglist">Analysing London's NoSQL meetups - Mark Needham</span></li>
+						<br />
+						<br />
+						<li><span class="biglist">Building Graph-Based Web Applications With Structr  - Axel Morgner</span></li>
+						<br />
+						<br />
+						<li><span class="biglist">Pub - The Slaughtered Lamb</span></li>
+					</ul>
+
+				</section>
+
+				<section align="left">
+					<h2>Tweet the Meetup</h2>
+					<br />
+					<h1>#neo4j</h1>
+					<br />
+					<table>
+						<tr>
+							<td style="vertical-align:top" width="50%"><h2>@markHneedham</h2><br />
+								<h2>@structr</h2></td>								
+							<td style="vertical-align:top" width="50%"><img src="images/twitter-bird.gif"  style="border-style:none;box-shadow:none;"></img></td>
+						</tr>
+					 
+					</table>
+
+				</section>				
+
 				<section class="center">					
 					<h1>Analysing London's NoSQL meetups</h1>
 					<br />
 					<h2>Mark Needham @markhneedham</h2>
 				</section>
 
-				<section>					
+				<section align="left">					
 					<p>
 					 <img src="images/meetup.png" width="100%" style="border-style:none;box-shadow:none;"></img>
 					</p>
 				</section>
 				<section class="center">
-					<h1>Expose data via APIs</h1>
+					<h2>Expose data via APIs</h2>
 <br />
 					<img src="images/meetupapi.png" style="border-style:none;box-shadow:none;" width="100%"  />
 				</section>
 
 				<section>
-					<h1>Very graphy data</h1>
+					<h2>Very graphy data</h2>
 <br />
-										<img src="images/nodes.png" style="border-style:none;box-shadow:none;"  width="100%"  />
+					<img src="images/nodes.png" style="border-style:none;box-shadow:none;"  width="100%"  />
 				</section>
 
 
-				<section>
-					<h1>Meetup API</h1>
+				<section align="left">
+					<h2>Meetup API</h2>
 					<br />
 					<ul>
-					<li><span style="font-size:1.8em;">Members</span></li>
+					<li><span class="list">Members</span></li>
 						<br />
-						<li><span style="font-size:1.8em;padding:5px;">Events</span></li>
+						<li><span class="list">Events</span></li>
 						<br />
-						<li><span style="font-size:1.8em;padding:5px;">RSVPs</span></li>
+						<li><span class="list">RSVPs</span></li>
 						<br />
-						<li><span style="font-size:1.8em;">Venues</span></li>
+						<li><span class="list">Venues</span></li>
 						<br />
-						<li><span style="font-size:1.8em;">Groups</span></li>
+						<li><span class="list">Groups</span></li>
 						<br />
-						<li><span style="font-size:1.8em;">Topics</span></li>
+						<li><span class="list">Topics</span></li>
 					</ul>				
 				</section>
 
-				<section>
-					<h1>The Meetup Graph</h1>
-<br />
-					*Diagram goes here*
-				</section>
-
-				<section>
+<section>
+					<h2>The Meetup Graph</h2>
 					
-				</section>
-
-
-				<section>
-<h1>Get the codez</h1>
-<br />
-<img src="images/github.png" style="border-style:none;box-shadow:none;"  width="50%"  />
-<h2><a href="http://github.com/mneedham/neo4j-meetup">http://github.com/mneedham/neo4j-meetup</a></h2>
-				</section>			
+					<img src="images/meetup.svg" style="border-style:none;box-shadow:none;" ></img>
+				</section>	
 
 				<section>
-
-					<h2>Initial Model</h2>
-
-				</section>
-
-		<section >
-					<h2>Let's have a look at the graph</h2>
+					<h2>The Meetup Graph</h2>
 					
-					<iframe src="http://localhost:7516" width="100%" height="1100px"></iframe>
-				</section>			
-
-				
-				<section>
-				
-					<div>
-					<ul>
-						<li>Find insights from existing data</li>
-						<li>Visualisation of the data (with Alistair)</li>
-						<li>Pull in more data sources
-								<ul>
-									<li>Continents - Wikipedia</li>
-									<li>Weather - <a href="http://www.wunderground.com/">wunderground</a></li>																		
-									<li>GDP - <a href="http://www.worldeconomics.com/Data/MadisonHistoricalGDP/Madison%20Historical%20GDP%20Data.efp">Madison Historical GDP Data</a></li>
-									<li>Club teams - Wikipedia or ESPN</li>
-								</ul>								
-						</li>
-
-					</ul>
-				</div>
-				</section>
-
-
-				<section data-background="http://www.shoroc.com/regionalprofile/wp-content/uploads/2012/07/show-of-hands-e1375683870929.jpg">
-					<h1>Have you used Neo4j before?</h1>
-					
+					<iframe src="http://localhost:7474" width="100%" height="1100px"></iframe>
 				</section>				
+
+				<section align="left">
+					<h2>Why Clojure?</h2>
+					<br />
+					<div>
+						<ul>
+					<li><span class="list">Data Oriented Programming</span></li>
+						<br />
+						<li><span class="list">Heard good things about Neocons</span></li>
+						<br />
+						<li><span class="list">Wanted to be more hipster</span></li>
+					</ul>
+						
+					</div>
+				</section>
+
+				<section align="left">
+					<h2>Not a great name</h2>
+					<br/>
+					<img src="images/neocons.png" style="border-style:none;box-shadow:none;"  width="100%"  />
+
+				</section>
+
+				<section align="left">
+					<h2>Where does Neocons go?</h2>
+					<br /><br />
+					<img src="images/architecture.png" style="border-style:none;box-shadow:none;"  width="100%"  />
+				</section>
+
+				<section align="left">
+					<h2>Importing the data</h2>
+					<br />
+					<br />
+					
+					<img src="images/import.png" style="border-style:none;box-shadow:none;"  width="100%"  />
+					<br /><br />
+					<div>
+						<h3>Takes a few minutes to import everything</h3>
+					</div>					
+				</section>
+
+				<section>
+					<div>
+						Database | Domain + Business Logic | UI
+						Do a diagram of this
+						Abstract the database away behind a repository
+						Do the hard work in the object model due to impedance mismatch
+
+						<div>Data Driven vs Domain Driven</div>
+					</div>
+				</section>
+
+				<section>
+					<div>
+						Express the application but not the data structure						
+					</div>
+					<div>
+						Relational DB make a poor technology for expressing the domain because you have to deal with foreign key meta data
+						e.g. left inner join, left outer join						
+					</div>
+					<div>
+						Graph DB gives us better tools for expressing the problem domain
+						We moved stuff out of the database because it was unpleasant to deal with. We now have the option of slimming down that layer
+					</div>
+
+				</section>
+								
+				<section>
+					<iframe src="http://localhost:3000" width="100%" height="1100px"></iframe>
+				</section>
+
+				
+
+				<section>
+					<h2>Querying the database</h2>
+					<br />
+					<pre style="box-shadow:none;">
+						<code data-trim>
+(def NEO4J_HOST "http://localhost:7474/db/data/")
+
+(defn cypher
+  ([query] (cypher query {}))
+  ([query params]
+    (let [conn (nr/connect! NEO4J_HOST)]
+      (->> (cy/tquery query params)
+           walk/keywordize-keys))))		
+						</code>
+					</pre>
+
+					<a href="https://github.com/mneedham/neo4j-meetup/blob/master/src/neo4j_meetup/db.clj#L36">src/neo4j_meetup/db.clj</a>
+				</section>	
+
+				<section>
+					<h2>Find Neo4j London Events</h2>
+
+					<pre style="box-shadow:none;">
+						<code data-trim>
+MATCH (event:Event)-[:HELD_AT]->(venue)
+OPTIONAL MATCH (event)<-[:TO]-(rsvp)<-[:RSVPD]-(person)
+OPTIONAL MATCH (rsvp)<-[:NEXT]-(initial)
+WITH event, venue, COLLECT({rsvp: rsvp, initial:initial, person:person}) AS responses
+WITH event, venue,
+    [response in responses WHERE response.initial is null AND response.rsvp.response = "yes"] AS a,
+    [response in responses WHERE NOT response.initial is null] AS d
+RETURN event, venue,
+       LENGTH(a) + REDUCE(acc=0, count IN [value IN a | value.rsvp.guests] | acc + count) as attendees,
+       LENGTH(d) + REDUCE(acc=0, count IN [value IN d | value.rsvp.guests] | acc + count) as dropouts
+						</code>
+					</pre>
+				</section>	
+
+				<section>
+					<h2>Find Neo4j London Events</h2>
+
+					<pre style="box-shadow:none;">
+						<code data-trim>
+(defn extract-date-time [timestamp]
+  { :formatted-time (timestamp/as-time timestamp)
+    :formatted-date (timestamp/as-date timestamp) })
+
+(defn all-events [meetup-id]
+  (let [query "..."]
+    (->>
+     (db/cypher query)
+     (map #(merge %  (extract-date-time
+                      (+ (-> % :event :data :time) (-> % :event :data :utc_offset))))))))
+						</code>
+					</pre>
+
+					<a href="https://github.com/mneedham/neo4j-meetup/blob/master/src/neo4j_meetup/meetup.clj#L169">src/neo4j_meetup/meetup.clj</a>
+
+				</section>	
+
+				<section>
+					<h2>What goes in Cypher, what goes in Clojure?</h2>
+					<br/>
+					<table width="100%">
+						<tr>
+							<th><h3>Cypher is good at</h3></th>
+							<th><h3>Clojure is good at</h3></th>
+						</tr>
+						<tr>
+							<td style="padding-top:5px;padding-bottom:5px;">Expressing graph patterns</td>
+							<td style="padding-top:5px;padding-bottom:5px;">Chaining functions to be applied to data</td>
+						</tr>
+						<tr>
+							<td style="padding-top:5px;padding-bottom:5px;">Exploring relationships in data</td>
+							<td style="padding-top:5px;padding-bottom:5px;">Manipulating/Massaging data</td>
+						</tr>
+
+					</table>
+				</section>	
+
+				<section>
+					<h2>What goes in Cypher, what goes in Clojure?</h2>
+
+					<pre style="box-shadow:none;">
+						<code data-trim>
+(defn home-page []
+  (let [now (c/to-long (clj-time.core/now)) 
+        all (meetup/all-events core/MEETUP_NAME)
+        {upcoming true past false } (group-by #(> (->> % :event :data :time) now) all)]
+    (layout/render
+     "home.html" {:past (sort-by time-descending past)
+                  :upcoming (sort-by time-ascending upcoming)})))					
+						</code>
+					</pre>
+				</section>					
+
+				<section>
+					<h2>Today's event</h2>
+					<br />
+					<iframe src="http://localhost:3000/events/186511512" width="100%" height="1100px"></iframe>
+				</section>	
+
+				<section>
+					<h2>Today's event as one query</h2>
+					<br />
+					<pre style="box-shadow:none;">
+						<code data-trim>
+MATCH (event:Event {id: {eventId}})-[:HELD_AT]->(venue)
+OPTIONAL MATCH (event)<-[:TO]-(rsvp)<-[:RSVPD]-(person)
+OPTIONAL MATCH (person)-[:INTERESTED_IN]->(topic) WHERE ()-[:HAS_TOPIC]->(topic)
+WITH event, venue, rsvp, person, COLLECT(topic) as topics ORDER BY rsvp.time
+OPTIONAL MATCH (rsvp)<-[:NEXT]-(initial)
+WITH event, venue, COLLECT({rsvp: rsvp, initial: initial, person: person, topics: topics}) AS responses
+WITH event, venue,
+    [response in responses WHERE response.initial is null AND response.rsvp.response = "yes"] as attendees,
+    [response in responses WHERE NOT response.initial is null] as dropouts, responses
+UNWIND([response in attendees | response.topics]) AS topics
+UNWIND(topics) AS topic
+WITH event, venue, attendees, dropouts, {id: topic.id, name:topic.name, freq:COUNT(*)} AS t
+RETURN event, venue, attendees, dropouts, COLLECT(t) AS topics				
+						</code>
+					</pre>
+				</section>	
+
+				<section>
+					<h2>Split into two queries</h2>
+					<br />
+					<pre style="box-shadow:none;">
+						<code data-trim>
+MATCH (event:Event {id: {eventId}})-[:HELD_AT]->(venue)
+OPTIONAL MATCH (event)<-[:TO]-(rsvp)<-[:RSVPD]-(person)
+WITH event, venue, rsvp, person ORDER BY rsvp.time
+OPTIONAL MATCH (rsvp)<-[:NEXT]-(initial)
+WITH event, venue, COLLECT({rsvp: rsvp, initial: initial, person: person}) AS responses
+WITH event, venue,
+    [response in responses WHERE response.initial is null 
+                           AND response.rsvp.response = "yes"] as attendees,
+    [response in responses WHERE NOT response.initial is null] as dropouts
+RETURN event, venue, attendees, dropouts				
+						</code>
+					</pre>
+					
+					<pre style="box-shadow:none;">
+						<code data-trim>
+MATCH (event:Event {id: {eventId}})
+MATCH (event)<-[:TO]-(rsvp {response: "yes"})<-[:RSVPD]-(person)-[:INTERESTED_IN]->(topic)
+WHERE ()-[:HAS_TOPIC]->(topic)
+RETURN topic.id AS id, topic.name AS name, COUNT(*) AS freq				
+						</code>
+					</pre>
+				</section>		
+
+				<section>
+					<div>
+						rendering via hiccup
+					</div>
+				</section>
+
+				<section>
+					<div>
+						adjacency lists
+					</div>
+				</section>
+
+				<section>
+					<div>
+						A meetup recommendation engine
+					</div>
+				</section>				
+
+				<section>
+					<h2>Get the codez</h2>
+					<br />
+					<img src="images/github.png" style="border-style:none;box-shadow:none;"  width="50%"  />
+					<h3><a href="http://github.com/mneedham/neo4j-meetup">http://github.com/mneedham/neo4j-meetup</a></h3>
+				</section>								
+
+				<section data-background="images/kenny.jpg" class="center">
+					<h1 style="color:white;">Want to come work with Kenny?</h1>
+				</section>			
+
+
 			</div>
 
 		</div>
@@ -160,7 +411,7 @@
 				width: 2060,
     			height: 1300,
     			maxScale: 1.0,
-    			minScale: 0.2,    			
+    			minScale: 0.2,    	
 
 				theme: 'simple', // available themes are in /css/theme
 				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
