@@ -1879,10 +1879,10 @@ body {
 }
 
 
-span.list {
+p.slidelist, span.slidelist {
 	font-size:1.7em;
 }
 
-span.biglist {
+p.slidebiglist, span.slidebiglist {
 	font-size:2.0em;
 }

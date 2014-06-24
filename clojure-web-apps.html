@@ -57,13 +57,13 @@
 					<h2>Schedule</h2>
 					<br />
 					<br />
-						<li><span class="biglist">Analysing London's NoSQL meetups - Mark Needham</span></li>
+						<li><p class="slidelist">Analysing London's NoSQL meetups - Mark Needham</span></li>
 						<br />
 						<br />
-						<li><span class="biglist">Building Graph-Based Web Applications With Structr  - Axel Morgner</span></li>
+						<li><p class="slidelist">Building Graph-Based Web Applications With Structr  - Axel Morgner</p></li>
 						<br />
 						<br />
-						<li><span class="biglist">Pub - The Slaughtered Lamb</span></li>
+						<li><p class="slidelist">Pub - The Slaughtered Lamb</span></li>
 					</ul>
 
 				</section>
@@ -112,17 +112,17 @@
 					<h2>Meetup API</h2>
 					<br />
 					<ul>
-					<li><span class="list">Members</span></li>
+					<li><span class="slidelist">Members</span></li>
 						<br />
-						<li><span class="list">Events</span></li>
+						<li><span class="slidelist">Events</span></li>
 						<br />
-						<li><span class="list">RSVPs</span></li>
+						<li><span class="slidelist">RSVPs</span></li>
 						<br />
-						<li><span class="list">Venues</span></li>
+						<li><span class="slidelist">Venues</span></li>
 						<br />
-						<li><span class="list">Groups</span></li>
+						<li><span class="slidelist">Groups</span></li>
 						<br />
-						<li><span class="list">Topics</span></li>
+						<li><span class="slidelist">Topics</span></li>
 					</ul>				
 				</section>
 
@@ -143,11 +143,11 @@
 					<br />
 					<div>
 						<ul>
-					<li><span class="list">Data Oriented Programming</span></li>
+					<li><span class="slidelist">Data Oriented Programming</span></li>
 						<br />
-						<li><span class="list">Heard good things about Neocons</span></li>
+						<li><span class="slidelist">Heard good things about Neocons</span></li>
 						<br />
-						<li><span class="list">Wanted to be more hipster</span></li>
+						<li><span class="slidelist">Wanted to be more hipster</span></li>
 					</ul>
 						
 					</div>
@@ -169,8 +169,7 @@
 				<section align="left">
 					<h2>Importing the data</h2>
 					<br />
-					<br />
-					
+					<br />					
 					<img src="images/import.png" style="border-style:none;box-shadow:none;"  width="100%"  />
 					<br /><br />
 					<div>
@@ -178,14 +177,37 @@
 					</div>					
 				</section>
 
-				<section>
+				<section align="left">
+					<h2>Let's talk about the impedance mismatch</h2>
+					<br />
+					<br />
+					<img src="images/impedance.png" style="border-style:none;box-shadow:none;"  width="100%"  />
+					<br /><br />
 					<div>
-						Database | Domain + Business Logic | UI
-						Do a diagram of this
-						Abstract the database away behind a repository
-						Do the hard work in the object model due to impedance mismatch
+						<p style="font-size:1.55em;">This is how we're taught to design our code.</p>
+					</div>
+				</section>
 
-						<div>Data Driven vs Domain Driven</div>
+				<section align="left">
+					<h2>Let's talk about the impedance mismatch</h2>
+					<br />
+					<br />
+					<img src="images/impedance.png" style="border-style:none;box-shadow:none;"  width="100%"  />
+					<br /><br />
+					<div>
+						<p style="font-size:1.55em;">Relational DB make a poor technology for expressing the domain because you have to deal with foreign key meta data.</p>
+						<p style="font-size:1.55em;">i.e. INNER JOIN, LEFT JOIN, OUTER JOIN</p>
+					</div>
+				</section>	
+
+				<section align="left">
+					<h2>Let's talk about the impedance mismatch</h2>
+					<br />
+					<br />
+					<img src="images/impedance.png" style="border-style:none;box-shadow:none;"  width="100%"  />
+					<br /><br />
+					<div>
+						<p style="font-size:1.55em;">We do all the hard work in the object model due to this impedance mismatch.</p>						
 					</div>
 				</section>
 
@@ -210,10 +232,10 @@
 
 				
 
-				<section>
+				<section align="left">
 					<h2>Querying the database</h2>
 					<br />
-					<pre style="box-shadow:none;">
+					<pre style="box-shadow:none;margin-left:2px;">
 						<code data-trim>
 (def NEO4J_HOST "http://localhost:7474/db/data/")
 
@@ -229,10 +251,10 @@
 					<a href="https://github.com/mneedham/neo4j-meetup/blob/master/src/neo4j_meetup/db.clj#L36">src/neo4j_meetup/db.clj</a>
 				</section>	
 
-				<section>
-					<h2>Find Neo4j London Events</h2>
+				<section align="left">
+					<h2>Find Neo4j London Events: The Query</h2>
 
-					<pre style="box-shadow:none;">
+					<pre style="box-shadow:none;margin-left:2px;">
 						<code data-trim>
 MATCH (event:Event)-[:HELD_AT]->(venue)
 OPTIONAL MATCH (event)<-[:TO]-(rsvp)<-[:RSVPD]-(person)
@@ -248,10 +270,10 @@ RETURN event, venue,
 					</pre>
 				</section>	
 
-				<section>
-					<h2>Find Neo4j London Events</h2>
+				<section align="left">
+					<h2>Find Neo4j London Events: The Code</h2>
 
-					<pre style="box-shadow:none;">
+					<pre style="box-shadow:none;margin-left:2px;">
 						<code data-trim>
 (defn extract-date-time [timestamp]
   { :formatted-time (timestamp/as-time timestamp)
@@ -270,7 +292,7 @@ RETURN event, venue,
 
 				</section>	
 
-				<section>
+				<section align="left">
 					<h2>What goes in Cypher, what goes in Clojure?</h2>
 					<br/>
 					<table width="100%">
@@ -290,10 +312,10 @@ RETURN event, venue,
 					</table>
 				</section>	
 
-				<section>
+				<section align="left">
 					<h2>What goes in Cypher, what goes in Clojure?</h2>
 
-					<pre style="box-shadow:none;">
+					<pre style="box-shadow:none;margin-left:2px;">
 						<code data-trim>
 (defn home-page []
   (let [now (c/to-long (clj-time.core/now)) 
@@ -312,10 +334,10 @@ RETURN event, venue,
 					<iframe src="http://localhost:3000/events/186511512" width="100%" height="1100px"></iframe>
 				</section>	
 
-				<section>
+				<section align="left">
 					<h2>Today's event as one query</h2>
 					<br />
-					<pre style="box-shadow:none;">
+					<pre style="box-shadow:none;margin-left:2px;">
 						<code data-trim>
 MATCH (event:Event {id: {eventId}})-[:HELD_AT]->(venue)
 OPTIONAL MATCH (event)<-[:TO]-(rsvp)<-[:RSVPD]-(person)
@@ -334,10 +356,10 @@ RETURN event, venue, attendees, dropouts, COLLECT(t) AS topics
 					</pre>
 				</section>	
 
-				<section>
+				<section align="left">
 					<h2>Split into two queries</h2>
 					<br />
-					<pre style="box-shadow:none;">
+					<pre style="box-shadow:none;margin-left:2px;">
 						<code data-trim>
 MATCH (event:Event {id: {eventId}})-[:HELD_AT]->(venue)
 OPTIONAL MATCH (event)<-[:TO]-(rsvp)<-[:RSVPD]-(person)
@@ -352,7 +374,7 @@ RETURN event, venue, attendees, dropouts
 						</code>
 					</pre>
 					
-					<pre style="box-shadow:none;">
+					<pre style="box-shadow:none;margin-left:2px;">
 						<code data-trim>
 MATCH (event:Event {id: {eventId}})
 MATCH (event)<-[:TO]-(rsvp {response: "yes"})<-[:RSVPD]-(person)-[:INTERESTED_IN]->(topic)
@@ -375,9 +397,9 @@ RETURN topic.id AS id, topic.name AS name, COUNT(*) AS freq
 				</section>
 
 				<section>
-					<div>
-						A meetup recommendation engine
-					</div>
+					<h2>A meetup recommendation engine</h2>
+					<br />
+					<img src="images/topic-rec.svg" style="border-style:none;box-shadow:none;" ></img>
 				</section>				
 
 				<section>
