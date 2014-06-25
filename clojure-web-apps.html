@@ -18,7 +18,8 @@
 		<link rel="stylesheet" href="css/theme/default.css" id="theme">
 
 		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="lib/css/github.css">
+		<!-- <link rel="stylesheet" href="lib/css/zenburn.css"> -->
 
 		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
 		<script>
@@ -178,7 +179,7 @@
 				</section>
 
 				<section align="left">
-					<h2>Let's talk about the impedance mismatch</h2>
+					<h2>Let's talk about impedance mismatch</h2>
 					<br />
 					<br />
 					<img src="images/impedance.png" style="border-style:none;box-shadow:none;"  width="100%"  />
@@ -189,7 +190,7 @@
 				</section>
 
 				<section align="left">
-					<h2>Let's talk about the impedance mismatch</h2>
+					<h2>Let's talk about impedance mismatch</h2>
 					<br />
 					<br />
 					<img src="images/impedance.png" style="border-style:none;box-shadow:none;"  width="100%"  />
@@ -201,7 +202,7 @@
 				</section>	
 
 				<section align="left">
-					<h2>Let's talk about the impedance mismatch</h2>
+					<h2>Let's talk about impedance mismatch</h2>
 					<br />
 					<br />
 					<img src="images/impedance.png" style="border-style:none;box-shadow:none;"  width="100%"  />
@@ -211,22 +212,25 @@
 					</div>
 				</section>
 
-				<section>
-					<div>
-						Express the application but not the data structure						
-					</div>
-					<div>
-						Relational DB make a poor technology for expressing the domain because you have to deal with foreign key meta data
-						e.g. left inner join, left outer join						
-					</div>
-					<div>
-						Graph DB gives us better tools for expressing the problem domain
-						We moved stuff out of the database because it was unpleasant to deal with. We now have the option of slimming down that layer
-					</div>
-
-				</section>
+				<section align="left">
+					<h2>How does it differ with graph backed applications?</h2>
+					<br />
+					<br />
+					<ul>
+					<li><span class="slidelist">We moved stuff out of the relational database because it was unpleasant to deal with.</span></li>
+					<br />	
+					<li><span class="slidelist">Graph databases gives us better tools for expressing the problem domain.</span></li>
+						<br />
+						<li><span class="slidelist">We now have the option of slimming down the object layer.
+					</ul>
 								
-				<section>
+				</section>				
+
+	
+								
+				<section align="left">
+					<h2>Let's have a look at the application</h2>
+					<br />
 					<iframe src="http://localhost:3000" width="100%" height="1100px"></iframe>
 				</section>
 
@@ -234,9 +238,9 @@
 
 				<section align="left">
 					<h2>Querying the database</h2>
-					<br />
+					
 					<pre style="box-shadow:none;margin-left:2px;">
-						<code data-trim>
+						<code class="border" data-trim>
 (def NEO4J_HOST "http://localhost:7474/db/data/")
 
 (defn cypher
@@ -248,14 +252,20 @@
 						</code>
 					</pre>
 
-					<a href="https://github.com/mneedham/neo4j-meetup/blob/master/src/neo4j_meetup/db.clj#L36">src/neo4j_meetup/db.clj</a>
+					<h3><a href="https://github.com/mneedham/neo4j-meetup/blob/master/src/neo4j_meetup/db.clj#L36">src/neo4j_meetup/db.clj</a></h3>
 				</section>	
+
+				<section>
+					<h2>Find Neo4j London Events: The Graph</h2>
+					
+					<img src="images/rsvps.svg" style="border-style:none;box-shadow:none;" ></img>
+				</section>				
 
 				<section align="left">
 					<h2>Find Neo4j London Events: The Query</h2>
-
+					
 					<pre style="box-shadow:none;margin-left:2px;">
-						<code data-trim>
+						<code class="border"  data-trim>
 MATCH (event:Event)-[:HELD_AT]->(venue)
 OPTIONAL MATCH (event)<-[:TO]-(rsvp)<-[:RSVPD]-(person)
 OPTIONAL MATCH (rsvp)<-[:NEXT]-(initial)
@@ -274,7 +284,7 @@ RETURN event, venue,
 					<h2>Find Neo4j London Events: The Code</h2>
 
 					<pre style="box-shadow:none;margin-left:2px;">
-						<code data-trim>
+						<code class="border" data-trim>
 (defn extract-date-time [timestamp]
   { :formatted-time (timestamp/as-time timestamp)
     :formatted-date (timestamp/as-date timestamp) })
@@ -288,7 +298,7 @@ RETURN event, venue,
 						</code>
 					</pre>
 
-					<a href="https://github.com/mneedham/neo4j-meetup/blob/master/src/neo4j_meetup/meetup.clj#L169">src/neo4j_meetup/meetup.clj</a>
+					<h3><a href="https://github.com/mneedham/neo4j-meetup/blob/master/src/neo4j_meetup/meetup.clj#L169">src/neo4j_meetup/meetup.clj</a></h3>
 
 				</section>	
 
@@ -301,22 +311,22 @@ RETURN event, venue,
 							<th><h3>Clojure is good at</h3></th>
 						</tr>
 						<tr>
-							<td style="padding-top:5px;padding-bottom:5px;">Expressing graph patterns</td>
-							<td style="padding-top:5px;padding-bottom:5px;">Chaining functions to be applied to data</td>
+							<td style="padding-top:10px;padding-bottom:10px;"><h4>Expressing graph patterns</h4></td>
+							<td style="padding-top:10px;padding-bottom:10px;"><h4>Chaining functions to be applied to data</h4></td>
 						</tr>
 						<tr>
-							<td style="padding-top:5px;padding-bottom:5px;">Exploring relationships in data</td>
-							<td style="padding-top:5px;padding-bottom:5px;">Manipulating/Massaging data</td>
+							<td style="padding-top:10px;padding-bottom:10px;"><h4>Exploring relationships in data</h4></td>
+							<td style="padding-top:10px;padding-bottom:10px;"><h4>Manipulating/Massaging data</h4></td>
 						</tr>
 
 					</table>
 				</section>	
 
 				<section align="left">
-					<h2>What goes in Cypher, what goes in Clojure?</h2>
+					<h2>Sorting in Clojure</h2>
 
 					<pre style="box-shadow:none;margin-left:2px;">
-						<code data-trim>
+						<code class="border" data-trim>
 (defn home-page []
   (let [now (c/to-long (clj-time.core/now)) 
         all (meetup/all-events core/MEETUP_NAME)
@@ -328,7 +338,7 @@ RETURN event, venue,
 					</pre>
 				</section>					
 
-				<section>
+				<section >
 					<h2>Today's event</h2>
 					<br />
 					<iframe src="http://localhost:3000/events/186511512" width="100%" height="1100px"></iframe>
@@ -336,9 +346,9 @@ RETURN event, venue,
 
 				<section align="left">
 					<h2>Today's event as one query</h2>
-					<br />
+					
 					<pre style="box-shadow:none;margin-left:2px;">
-						<code data-trim>
+						<code class="border" data-trim>
 MATCH (event:Event {id: {eventId}})-[:HELD_AT]->(venue)
 OPTIONAL MATCH (event)<-[:TO]-(rsvp)<-[:RSVPD]-(person)
 OPTIONAL MATCH (person)-[:INTERESTED_IN]->(topic) WHERE ()-[:HAS_TOPIC]->(topic)
@@ -357,10 +367,9 @@ RETURN event, venue, attendees, dropouts, COLLECT(t) AS topics
 				</section>	
 
 				<section align="left">
-					<h2>Split into two queries</h2>
-					<br />
+					<h2>Split up concerns</h2>					
 					<pre style="box-shadow:none;margin-left:2px;">
-						<code data-trim>
+						<code class="border" data-trim>
 MATCH (event:Event {id: {eventId}})-[:HELD_AT]->(venue)
 OPTIONAL MATCH (event)<-[:TO]-(rsvp)<-[:RSVPD]-(person)
 WITH event, venue, rsvp, person ORDER BY rsvp.time
@@ -372,10 +381,9 @@ WITH event, venue,
     [response in responses WHERE NOT response.initial is null] as dropouts
 RETURN event, venue, attendees, dropouts				
 						</code>
-					</pre>
-					
+					</pre>					
 					<pre style="box-shadow:none;margin-left:2px;">
-						<code data-trim>
+						<code class="border" data-trim>
 MATCH (event:Event {id: {eventId}})
 MATCH (event)<-[:TO]-(rsvp {response: "yes"})<-[:RSVPD]-(person)-[:INTERESTED_IN]->(topic)
 WHERE ()-[:HAS_TOPIC]->(topic)
@@ -384,23 +392,135 @@ RETURN topic.id AS id, topic.name AS name, COUNT(*) AS freq
 					</pre>
 				</section>		
 
-				<section>
-					<div>
-						rendering via hiccup
-					</div>
+				<section align="left">
+					<h2>Rendering with hiccup</h2>
+					<img src="images/hiccup.png" style="border-style:none;box-shadow:none;"  />
+
 				</section>
 
 				<section>
-					<div>
-						adjacency lists
-					</div>
+					<h2>Comparing the meetups</h2>
+					<br />
+					<iframe src="http://localhost:3000/groups" width="100%" height="1100px"></iframe>					
 				</section>
+
+				<section>
+					<h2>Meetup member overlap: The graph</h2>
+					<br />
+					<img src="images/overlap.svg" style="border-style:none;box-shadow:none;" ></img>
+				</section>					
+
+				<section align="left">
+					<h2>Meetup member overlap: The query</h2>
+					<pre style="box-shadow:none;margin-left:2px;">
+						<code class="border" data-trim>
+MATCH (g1:Group), (g2:Group)
+OPTIONAL MATCH path = (g1)<-[:MEMBER_OF]-()-[:MEMBER_OF]->(g2)
+
+WITH g1, g2, CASE WHEN path is null THEN 0 ELSE COUNT(path) END AS overlap
+ORDER BY g1.name, g2.name
+
+RETURN g1, COLLECT(overlap) AS overlap
+ORDER BY g1.name			
+						</code>
+					</pre>						
+				</section>				
+
+				<section>
+					<h2>Meetup member overlap in R</h2>
+					<br />
+					<img src="images/roverlap.png" width="100%" style="border-style:none;box-shadow:none;" ></img>
+				</section>					
+
+				<section>
+					<h2>Nicole White's RNeo4j</h2>
+					<br />
+					<img src="images/rneo4j.png" width="100%" style="border-style:none;box-shadow:none;" ></img>
+					<br />
+					<h3><a href="http://nicolewhite.github.io/RNeo4j/">http://nicolewhite.github.io/RNeo4j/</a></h3>
+				</section>	
+
+				<section>
+					<h2>Comparing specific meetups</h2>
+					<br />
+					<iframe src="http://localhost:3000/groups" width="100%" height="1100px"></iframe>					
+				</section>				
+
+				<section align="left">
+					<h2>Specific Meetup member overlap: The query</h2>
+					<pre style="box-shadow:none;margin-left:2px;">
+						<code class="border" data-trim>
+MATCH (g:Group) WHERE g.id IN {ids}
+
+WITH COLLECT(g) AS groups UNWIND groups AS g1 UNWIND groups AS g2
+WITH g1, g2 WHERE g1 <> g2
+OPTIONAL MATCH path = (g1)<-[:MEMBER_OF]-()-[:MEMBER_OF]->(g2)
+WHERE id(g1) < id(g2)
+
+WITH g1, g2, COUNT(path) AS overlap
+ORDER BY id(g1)
+
+WITH g1, [o IN COLLECT({group: g2, overlap: overlap }) WHERE o.overlap > 0] AS others
+MATCH (g1)<-[:MEMBER_OF]-()
+
+RETURN g1, COUNT(*) AS members, others 
+ORDER BY id(g1)		
+						</code>
+					</pre>						
+				</section>					
 
 				<section>
 					<h2>A meetup recommendation engine</h2>
 					<br />
 					<img src="images/topic-rec.svg" style="border-style:none;box-shadow:none;" ></img>
 				</section>				
+
+				<section>
+					<h2>A meetup recommendation engine</h2>
+					<br />
+					<iframe src="http://localhost:3000/groups/1954021" width="100%" height="1100px"></iframe>
+				</section>		
+
+				<section align="left">
+					<h2>Our members' topics: The query</h2>
+					<pre style="box-shadow:none;margin-left:2px;">
+						<code class="border" data-trim>
+MATCH (m)-[:MEMBER_OF]->(group:Group {id: {groupId}})
+
+WITH COLLECT(m) AS members, group
+UNWIND members AS m
+MATCH (m)-[:INTERESTED_IN]-(topic)
+
+WITH topic, COUNT(*) as count, LENGTH(members) AS numberOfMembers,
+     CASE WHEN LENGTH((group)-[:HAS_TOPIC]->(topic)) = 0 THEN false ELSE true END AS groupHasTopic,
+     10^2 AS factor
+RETURN topic, count, groupHasTopic,
+       round((count * 100.0 / numberOfMembers) * factor) / factor AS percentage      
+ORDER BY count DESC
+LIMIT 50
+						</code>
+					</pre>						
+				</section>					
+
+
+				<section align="left">
+					<h2>Meetup topic suggestions: The query</h2>
+					<pre style="box-shadow:none;margin-left:2px;">
+						<code class="border" data-trim>
+MATCH (topic:Topic), (group:Group {id: {groupId}})
+
+OPTIONAL MATCH (topic)<-[:INTERESTED_IN]-()
+WHERE NOT (group)-[:HAS_TOPIC]->(topic)
+
+WITH topic, COUNT(*) AS interested
+OPTIONAL MATCH path = (topic)<-[:HAS_TOPIC]-()
+
+RETURN topic, interested, COUNT(path) AS otherGroups
+ORDER BY interested DESC
+LIMIT 50	
+						</code>
+					</pre>						
+				</section>					
 
 				<section>
 					<h2>Get the codez</h2>
@@ -426,7 +546,7 @@ RETURN topic.id AS id, topic.name AS name, COUNT(*) AS freq
 			// Full list of configuration options available here:
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
-				controls: true,
+				controls: false,
 				progress: true,
 				history: true,
 				center: false,

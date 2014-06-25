@@ -1,0 +1,50 @@
+<ul class="graph-diagram-markup" data-internal-scale="1" data-external-scale="1">
+  <li class="node" data-node-id="0" data-x="-398.076904296875" data-y="-28.55777359008789">
+    <span class="caption">Person 1</span>
+  </li>
+  <li class="node" data-node-id="1" data-x="-398.076904296875" data-y="653.9796695709229">
+    <span class="caption">Yes</span>
+  </li>
+  <li class="node" data-node-id="2" data-x="1233.4715881347656" data-y="179">
+    <span class="caption">Group</span>
+  </li>
+  <li class="node" data-node-id="3" data-x="112" data-y="-28.55777359008789">
+    <span class="caption">Person 2</span>
+  </li>
+  <li class="node" data-node-id="4" data-x="1233.4715881347656" data-y="653.9796695709229">
+    <span class="caption">Venue</span>
+  </li>
+  <li class="node" data-node-id="5" data-x="612.6882934570312" data-y="653.9796695709229">
+    <span class="caption">Event</span>
+  </li>
+  <li class="node" data-node-id="6" data-x="165.07249450683594" data-y="653.9796695709229">
+    <span class="caption">No</span>
+  </li>
+  <li class="node" data-node-id="7" data-x="573.6514282226562" data-y="179">
+    <span class="caption">Yes</span>
+  </li>
+  <li class="relationship" data-from="2" data-to="5">
+    <span class="type">HOSTED EVENT</span>
+  </li>
+  <li class="relationship" data-from="5" data-to="4">
+    <span class="type">HELD AT</span>
+  </li>
+  <li class="relationship" data-from="0" data-to="6">
+    <span class="type">RSVPD</span>
+  </li>
+  <li class="relationship" data-from="6" data-to="5">
+    <span class="type">TO</span>
+  </li>
+  <li class="relationship" data-from="0" data-to="1">
+    <span class="type">INITIALLY_RSVPD</span>
+  </li>
+  <li class="relationship" data-from="1" data-to="6">
+    <span class="type">NEXT</span>
+  </li>
+  <li class="relationship" data-from="3" data-to="7">
+    <span class="type">RSVPD</span>
+  </li>
+  <li class="relationship" data-from="7" data-to="5">
+    <span class="type">TO</span>
+  </li>
+</ul>
