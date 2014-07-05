@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Py2neo &mdash; py2neo 1.6.4 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/badge_only.css" type="text/css" />
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.6.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="https://media.readthedocs.org/javascript/jquery/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="https://media.readthedocs.org/javascript/jquery/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="https://media.readthedocs.org/javascript/underscore.js"></script>
+    <script type="text/javascript" src="https://media.readthedocs.org/javascript/doctools.js"></script>
+    <script type="text/javascript" src="https://media.readthedocs.org/javascript/readthedocs-doc-embed.js"></script>
+    <link rel="top" title="py2neo 1.6.4 documentation" href="#" />
+    <link rel="next" title="Requirements &amp; Installation" href="install/" />
+ 
+<!-- RTD Extra Head -->
+
+
+
+  
+  <!-- 
+  Always link to the latest version, as canonical.
+  http://docs.readthedocs.org/en/latest/canonical.html
+  -->
+  <link rel="canonical" href="http://book.py2neo.org/en/latest/" />
+  
+
+<script type="text/javascript">
+  // This is included here because other places don't have access to the pagename variable.
+  var READTHEDOCS_DATA = {
+    project: "py2neo",
+    version: "latest",
+    language: "en",
+    page: "index",
+    theme: "nature",
+    docroot: "/book/",
+    api_host: "https://readthedocs.org"
+  }
+  // Old variables
+  var doc_version = "latest";
+  var doc_slug = "py2neo";
+  var page_name = "index";
+  var html_theme = "nature";
+</script>
+<!-- RTD Analytics Code -->
+<!-- Included in the header because you don't have a footer block. -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17997319-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- end RTD Analytics Code -->
+
+
+<!-- User Analytics Code -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-25485551-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- End User Analytics Code -->
+
+<!-- end RTD <extrahead> -->
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex/" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex/" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="install/" title="Requirements &amp; Installation"
+             accesskey="N">next</a> |</li>
+        <li><a href="#">py2neo 1.6.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="py2neo">
+<h1>Py2neo<a class="headerlink" href="#py2neo" title="Permalink to this headline">¶</a></h1>
+<p>Py2neo is a simple and pragmatic Python library that provides access to the
+popular graph database Neo4j via its RESTful web service interface. With no
+external dependencies, installation is straightforward and getting started
+with coding is easy. The library is actively maintained on GitHub, regularly
+updated in the Python Package Index and is built uniquely for Neo4j in close
+association with its team and community.</p>
+<div class="section" id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install/">Requirements &amp; Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install/#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install/#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install/#source-code">Source Code</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fundamentals/">Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals/#node-relationship-abstracts">Node &amp; Relationship Abstracts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals/#referencing-nodes-within-the-same-batch">Referencing Nodes within the same Batch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals/#node-relationship-ids">Node &amp; Relationship IDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals/#transactions">Transactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fundamentals/#errors">Errors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="graphs_nodes_relationships/">Graphs, Nodes &amp; Relationships</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="graphs_nodes_relationships/#graphdatabaseservice">GraphDatabaseService</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphs_nodes_relationships/#nodes-relationships">Nodes &amp; Relationships</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="paths/">Paths</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schema/">Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="indexes/">Indexes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="batches/">Batches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cypher/">Cypher</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cypher/#id2">Cypher Transactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cypher/#classic-cypher-execution">Classic Cypher Execution</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ogm/">Object-Graph Mapping (OGM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geoff/">Geoff</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="geoff/#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geoff/#paths">Paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geoff/#index-entries">Index Entries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geoff/#comments">Comments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geoff/#subgraphs">Subgraphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geoff/#module-functions">Module Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geoff/#full-geoff-syntax-specification-version-2">Full Geoff Syntax Specification (version 2)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="calendar/">Date Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="neotool/">Command Line Tool</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="neotool/#clearing-the-database">Clearing the Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="neotool/#cypher-execution">Cypher Execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="neotool/#inserting-merging-geoff-data">Inserting/Merging Geoff Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="neotool/#converting-xml-data-into-geoff">Converting XML Data into Geoff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="neotool/#interactive-shell">Interactive Shell</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="deprecated_features/">Deprecated Features</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deprecated_features/#cypher">Cypher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deprecated_features/#geoff">Geoff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deprecated_features/#writebatch">WriteBatch</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cookbook/">Cookbook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cookbook/#creating-a-simple-graph">Creating a Simple Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cookbook/#batch-insertion-using-index">Batch Insertion using Index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cookbook/#default-uri">Default URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cookbook/#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cookbook/#uri-rewriting">URI Rewriting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cookbook/#logging">Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="neomodel/">Working with Django: neomodel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="neomodel/#the-basics">The basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="neomodel/#traversals-experimental">Traversals - EXPERIMENTAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="neomodel/#category-nodes">Category nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="neomodel/#cardinality">Cardinality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="neomodel/#cypher-queries">Cypher queries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="neomodel/#relating-to-many-node-types">Relating to many node types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="neomodel/#batch-create">Batch create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="neomodel/#hooks-and-signals">Hooks and Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="neomodel/#indexing">Indexing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="neomodel/#properties">Properties</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="#">
+              <img class="logo" src="_static/py2neo-glossy.190x260.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Py2neo</a><ul>
+<li><a class="reference internal" href="#contents">Contents</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="install/"
+                        title="next chapter">Requirements &amp; Installation</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex/" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex/" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="install/" title="Requirements &amp; Installation"
+             >next</a> |</li>
+        <li><a href="#">py2neo 1.6.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011-2014, Nigel Small.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
+    </div>
+  </body>
+</html>

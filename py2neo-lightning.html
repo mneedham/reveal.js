@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Neo4j World Cup Hackathon</title>
+
+		<meta name="description" content="Lightning talk at the Python London user group">
+		<meta name="author" content="Mark Needham">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="css/print/pdf.css">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/github.css">
+		<!-- <link rel="stylesheet" href="lib/css/zenburn.css"> -->
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+	<header style="position: absolute;top: 50px; left: 100px; z-index:500; font-size:100px;background-color: rgba(0,0,0,0)"></header>			
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">						
+				<section class="center">					
+					<h1>py2neo - Making Python and Neo4j play nicely together</h1>
+					<br />
+					<h2>Mark Needham @markhneedham</h2>
+					<h2>Nigel Small @neonige</h2>
+				</section>
+
+				<section align="center">					
+					<h2>What's Neo4j?</h2>
+					<br />
+					<p>
+
+					 <img src="images/overview-of-neo.svg" width="100%" style="border-style:none;box-shadow:none;"></img>
+					</p>
+				</section>	
+
+				<section align="center">					
+					<h2>Huh?!</h2>
+					<br />
+					<p>
+
+					 <img src="images/dojo.svg" width="100%" style="border-style:none;box-shadow:none;"></img>
+					</p>
+				</section>	
+
+
+				<section align="center">					
+					<h2>Ok cool, show me</h2>
+					<br />
+					<iframe src="http://localhost:7474" width="100%" height="1100px"></iframe>
+
+				</section>	
+
+
+				<section class="center">					
+					<h2>What's Python got to do with it?</h2>
+					<p>
+
+					 <img src="images/python.png" width="100%" style="border-style:none;box-shadow:none;"></img>
+					</p>
+
+				</section>					
+
+				<section align="center">					
+					<h2>Python Driver for Neo4j</h2>
+					<br />
+					<p>
+					 <img src="images/py2neo-big.png" width="50%" style="border-style:none;box-shadow:none;"></img>
+					</p>
+				</section>
+				<section align="left">					
+					<h2>Python Driver for Neo4j</h2>
+					<br />
+					<br />
+					<ul>
+					<li><span class="slidelist">First version in 2011</span></li>
+						<br />
+						<li><span class="slidelist">Support for multiple APIs: REST/Cypher/Transactions</span></li>
+						<br />
+						<li><span class="slidelist">Python 2.7 and 3.3</span></li>
+						<br />
+						<li><span class="slidelist">Compatible with Neo4j server versions 1.x and 2.x</span></li>
+						<br />
+						<li><span class="slidelist">No dependencies</span></li>
+						<br />
+						<li><span class="slidelist">Thoroughly documented</span></li>
+						<br />
+						<li><span class="slidelist">Comes with command line tool</span></li>
+					</ul>
+				</section>
+
+				<section align="left">
+					<h2>Find all the characters</h2>
+					
+					<pre style="box-shadow:none;margin-left:2px;">
+						<code class="border"  data-trim>
+from __future__ import print_function
+from py2neo.neo4j import *
+
+graph = GraphDatabaseService()
+for char in graph.find("Character"):
+    print(char["name"])
+
+						</code>
+					</pre>
+				</section>	
+				
+				<section align="left">
+					<h2>Find how many episodes a character appeared in</h2>
+					
+					<pre style="box-shadow:none;margin-left:2px;">
+						<code class="border"  data-trim>
+from py2neo import neo4j
+graph_db = neo4j.GraphDatabaseService()
+
+q = """MATCH (c:Character)-[a:APPEARED_IN]->(season)
+       RETURN c.name, sum(a.episodes) AS episodes
+       ORDER BY episodes DESC"""
+
+query = neo4j.CypherQuery(graph_db, q)
+
+for record in query.execute().data:
+    print record
+						</code>
+					</pre>
+				</section>
+
+<section align="center">					
+					<h2>Maybe a bit of iPython Notebook Action?</h2>
+					<br />
+					<iframe src="http://localhost:8888/notebooks/24.ipynb#" width="100%" height="1100px"></iframe>
+
+				</section>	
+
+				<section align="center">					
+					<h2>A Python + Neo4j Hackathon</h2>
+					<h3>15th July</h3>
+					<br />
+					<p>
+					 <img src="images/hackathon.png" width="100%" style="border-style:none;box-shadow:none;"></img>
+					</p>
+				</section>
+
+				<section align="center">					
+					<h2>A Python + Neo4j Hackathon</h2>
+					
+					<pre style="box-shadow:none;margin-left:2px;">
+						<code class="border"  data-trim>
+
+#!/usr/bin/env python
+
+from bottle import abort, get, run, template
+from py2neo.neo4j import GraphDatabaseService, CypherQuery
+
+
+INDEX = """\
+<html>
+<body>
+<h1>24 Wiki</h1>
+<ul>
+    <li><a href="/char/">Characters</a></li>
+</ul>
+</body>
+</html>
+"""
+
+CHAR_LIST = """\
+<html>
+<body>
+<h1>Characters</h1>
+<ul>
+%for char in chars:
+    <li><a href="/char/{{char.name}}">{{char.name}}</a></li>
+%end
+</ul>
+</body>
+</html>
+"""
+
+CHAR = """\
+<html>
+<body>
+<h1>{{char["name"]}}</h1>
+<dl>
+    <dt>Played by:</dt>
+    <dd>{{actor["name"]}}</dd>
+    <dt>Appearances:</dt>
+    <dd>
+        <ul>
+        %for appearance in appearances:
+            <li>{{appearance.end_node["name"]}} ({{appearance["episodes"]}} episodes)</li>
+        %end
+        </ul>
+    </dd>
+</dl>
+<p><a href="/char/">Return to character list</a></p>
+</body>
+</html>
+"""
+
+"""
+
+# Set up a link to the local graph database.
+graph = GraphDatabaseService()
+
+@get('/')
+def index():
+    """ Simply return the index page.
+    """
+    return template(INDEX)
+
+@get('/char/')
+def char_list():
+    """ Fetch a list of all known characters, ordered by name and render
+    them within the CHAR_LIST template.
+    """
+    query = "MATCH (c:Character) RETURN c.name AS name ORDER by c.name"
+    return template(CHAR_LIST, chars=CypherQuery(graph, query).execute())
+
+@get('/char/<name>')
+def char(name):
+    """ Display details of a particular character.
+    """
+    # Look for a node with a "Character" label and a "name" property
+    # matching the name passed in.
+    found = graph.find("Character", "name", name)
+    try:
+        # Pick up the first node found.
+        char = next(found)
+    except StopIteration:
+        # If no nodes are found, throw a 404.
+        abort(404, "Character not found")
+    else:
+        # Otherwise pick up some more data and render a template.
+        actor = next(char.match_incoming("STARRED_AS")).start_node
+        appearances = char.match_outgoing("APPEARED_IN")
+        return template(CHAR, char=char, actor=actor, appearances=appearances)
+
+if __name__ == "__main__":
+    run(host="localhost", port=8080)
+
+
+						</code>
+
+					</pre>
+				</section>	
+
+	
+
+				<section class="center">
+					<h1>Come along!</h1>
+						<h2>Learn you some Neo4j and teach us some Python for great good</h1>
+					<br />
+<p>
+					 <img src="images/smiley.jpg"  style="border-style:none;box-shadow:none;"></img>
+					</p>			
+
+					
+				</section>
+
+		
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: false,
+				progress: true,
+				history: true,
+				center: false,
+				width: 2060,
+    			height: 1300,
+    			maxScale: 1.0,
+    			minScale: 0.2,    	
+
+				theme: 'simple', // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+			Reveal.addEventListener( 'customevent', function() {
+				console.log( '"customevent" has fired' );
+			} );
+
+		</script>
+
+	</body>
+</html>
